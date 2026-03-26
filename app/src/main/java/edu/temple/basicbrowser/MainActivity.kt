@@ -30,9 +30,19 @@ class MainActivity : AppCompatActivity() {
 
         goButton.setOnClickListener {
             val userInput = urlEditText.text.toString()
-            webView.loadUrl(userInput)
+            val formattedUrl = formatUrl(userInput)
+            urlEditText.setText(formattedUrl)
+            webView.loadUrl(formattedUrl)
+
         }
 
     }
 
+    private fun formatUrl(url: String): String {
+        return if (url.startsWith("http://") || url.startsWith("https://")) {
+            url
+        } else {
+            "https://$url"
+        }
+    }
 }
