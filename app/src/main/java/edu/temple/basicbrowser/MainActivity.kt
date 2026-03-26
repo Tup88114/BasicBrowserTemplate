@@ -28,5 +28,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        goButton.setOnClickListener {
+            val userInput = urlEditText.text.toString()
+            webView.loadUrl(userInput)
+        }
+
     }
+
 }
